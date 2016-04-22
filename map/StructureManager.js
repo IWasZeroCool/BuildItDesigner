@@ -10,19 +10,19 @@ StructureManager.prototype.rotateStructure = function(structureIndex, stage, ang
 	stage.update();
 };
 
-StructureManager.prototype.updateStructure = function(x, y, stage) {
+StructureManager.prototype.updateStructure = function(x, y, stage, orientation) {
 	var i = this.getStructure(x, y);
 	if (UIState.whichButton.id == "clearBuildingButton") {
 		return this.checkClearStructure(x, y, stage);
 	} else if (UIState.whichButton.id == "rotateBuildingButton") {
 		return this.checkClearStructure(x, y, stage, this.structures[i].getWidth(), this.structures[i].getHeight(), i);
 	} else {
-		return this.checkUpdateStructure(x, y, buttonToClass[UIState.whichButton.id], stage);
+		return this.checkUpdateStructure(x, y, buttonToClass[UIState.whichButton.id], stage, orientation);
 	}
 	return null;
 };
 
-StructureManager.prototype.checkUpdateStructure = function(x, y, structureClass, stage) {
+StructureManager.prototype.checkUpdateStructure = function(x, y, structureClass, stage, orientation) {
 	var structure = new structureClass(x, y);
 	this.checkClearStructure(x, y, stage, structure.getWidth(), structure.getHeight());
 	for (var i = 0; i < this.structures.length; i++) {
@@ -33,7 +33,11 @@ StructureManager.prototype.checkUpdateStructure = function(x, y, structureClass,
 		}
 	}
 	this.structures.push(structure);
-	structure.loadZone(this.structuresContainer);
+	if (orientation !== undefined) {
+		structure.rotate(this.structuresContainer, orientation);
+	} else {
+		structure.loadZone(this.structuresContainer);
+	}
 	stage.update();
 	return structure;
 };

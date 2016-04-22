@@ -1,10 +1,11 @@
 
-function ManagerOverseer(_stage, _roadManager, _structureManager, _effectAreaManager, _statisticsManager) {
+function ManagerOverseer(_stage, _roadManager, _structureManager, _effectAreaManager, _statisticsManager, _highlight) {
 	this.stage = _stage;
 	this.roadManager = _roadManager;
 	this.structureManager = _structureManager;
 	this.effectAreaManager = _effectAreaManager;
 	this.statisticsManager = _statisticsManager;
+	this.highlight = _highlight;
 	this.statisticsManager.init();
 }
 
@@ -45,7 +46,7 @@ ManagerOverseer.prototype.mouseClick = function(x, y) {
 			this.effectAreaManager.structureModified();
 			this.effectAreaManager.checkMouseOver(this.structureManager.getStructure(x, y));
 		} else {
-			structure = this.structureManager.updateStructure(x, y, this.stage);
+			structure = this.structureManager.updateStructure(x, y, this.stage, this.highlight.orientation);
 			this.effectAreaManager.structureModified();
 			for (var sx = structure.x; sx < structure.x + structure.width; sx++) {
 				for (var sy = structure.y; sy < structure.y + structure.height; sy++) {

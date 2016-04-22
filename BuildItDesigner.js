@@ -224,6 +224,7 @@ BuildItDesigner.prototype.initControls = function() {
 				_this.map.highlight.setDefault();
 			} else if (id == "rotateBuildingButton") {
 				_this.map.highlight.setDefault();
+			} else if (id == "rotateHighlightButton") {
 			} else if (id == "clearBuildingButton") {
 				_this.map.highlight.setDefault();
 			} else {
@@ -234,6 +235,9 @@ BuildItDesigner.prototype.initControls = function() {
 		}
 	};
 
+	$('#rotateHighlightButton').button({icons: {primary: "ui-icon-arrowrefresh-1-e"}}).click(function() {
+		_this.map.highlight.rotate();
+	});
 	$('.toggleButton').click(toggleButtonClick);
 
 	$(document).tooltip({

@@ -90,8 +90,13 @@ function Map(_stage) {
 	this.structureManager = new StructureManager(this.structures.buildings, this.structuresContainer);
 	this.effectAreaManager = new EffectAreaManager(this.structures.buildings, this.areaEffectsContainer, this.stage);
 	this.statisticsManager = new StatisticsManager(this.structures);
-	this.managerOverseer = new ManagerOverseer(this.stage, this.roadManager, this.structureManager, this.effectAreaManager, this.statisticsManager);
 	this.highlight = new Highlight(this.stage, this.highlightContainer);
+	this.managerOverseer = new ManagerOverseer(this.stage,
+												this.roadManager,
+												this.structureManager,
+												this.effectAreaManager,
+												this.statisticsManager,
+												this.highlight);
 	this.toolTip = new ToolTip();
 
 }
