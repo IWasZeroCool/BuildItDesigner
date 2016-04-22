@@ -22,9 +22,13 @@ ToolTip.prototype.move = function(x, y) {
 ToolTip.prototype.hide = function() {
 	this.lastMapObj = null;
 	$(this.ttObj).remove();
+	this.ttObj = null;
 };
 
 ToolTip.prototype.setupToolTip = function(mapObj) {
+	if (this.ttObj) {
+		$(this.ttObj).remove();
+	}
 	this.ttObj = this.getToolTipContent(null, mapObj);
 	$(this.ttObj).css("position", "absolute");
 	$(this.ttObj).addClass("ui-tooltip ui-widget ui-corner-all ui-widget-content");
