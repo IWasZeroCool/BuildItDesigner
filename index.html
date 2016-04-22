@@ -1,0 +1,466 @@
+<html>
+	<head>
+
+		<link rel="stylesheet" href="libs/jquery-ui.min.css">
+		<link rel="stylesheet" href="libs/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="libs/jquery-ui.theme.min.css">
+		<link rel="stylesheet" href="libs/themes/default/style.min.css">
+
+		<script type="text/javascript" src="libs/createjs-2015.11.26.min.js"></script>
+		<script type="text/javascript" src="libs/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="libs/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="libs/jstree.min.js"></script>
+
+		<script type="text/javascript" src="models/structures/StructureBase.js"></script>
+		<script type="text/javascript" src="models/structures/roads/RoadBase.js"></script>
+		<script type="text/javascript" src="models/structures/roads/TwoLaneRoad.js"></script>
+		<script type="text/javascript" src="models/structures/roads/FourLaneRoad.js"></script>
+		<script type="text/javascript" src="models/structures/roads/SixLaneRoad.js"></script>
+		<script type="text/javascript" src="models/structures/roads/AvenueRoad.js"></script>
+		<script type="text/javascript" src="models/structures/roads/BoulevardRoad.js"></script>
+		<script type="text/javascript" src="models/structures/roads/StreetcarRoad.js"></script>
+		<script type="text/javascript" src="models/structures/residential/ResidentialBase.js"></script>
+		<script type="text/javascript" src="models/structures/residential/ResidentialZone.js"></script>
+		<script type="text/javascript" src="models/structures/residential/ParisianZone.js"></script>
+		<script type="text/javascript" src="models/structures/residential/LondonZone.js"></script>
+		<script type="text/javascript" src="models/structures/residential/TokyoZone.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/IndustrialBase.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/SmallIndustry.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/BasicIndustry.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/MassProductionIndustry.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/HighTechIndustry.js"></script>
+		<script type="text/javascript" src="models/structures/industrial/NanoTechIndustry.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/CommercialBase.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/DonutShop.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/FarmersMarket.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/FashionStore.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/FastFoodRestaurant.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/FurnitureStore.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/GardeningSupplies.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/HardwareStore.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/HomeAppliances.js"></script>
+		<script type="text/javascript" src="models/structures/commercial/SuppliesStore.js"></script>
+		<script type="text/javascript" src="models/structures/power/PowerBase.js"></script>
+		<script type="text/javascript" src="models/structures/power/CoalPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/DeluxeWindPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/FusionPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/NuclearPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/OilPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/SolarPower.js"></script>
+		<script type="text/javascript" src="models/structures/power/WindPower.js"></script>
+		<script type="text/javascript" src="models/structures/water/WaterBase.js"></script>
+		<script type="text/javascript" src="models/structures/water/WaterTower.js"></script>
+		<script type="text/javascript" src="models/structures/water/WaterPumpingStation.js"></script>
+		<script type="text/javascript" src="models/structures/sewage/SewageBase.js"></script>
+		<script type="text/javascript" src="models/structures/sewage/SmallSewage.js"></script>
+		<script type="text/javascript" src="models/structures/sewage/BasicSewage.js"></script>
+		<script type="text/javascript" src="models/structures/sewage/DeluxeSewage.js"></script>
+		<script type="text/javascript" src="models/structures/wasteManagement/WasteManagementBase.js"></script>
+		<script type="text/javascript" src="models/structures/wasteManagement/GarbageDump.js"></script>
+		<script type="text/javascript" src="models/structures/wasteManagement/SmallGarbageDump.js"></script>
+		<script type="text/javascript" src="models/structures/wasteManagement/GarbageIncinerator.js"></script>
+		<script type="text/javascript" src="models/structures/wasteManagement/RecyclingCenter.js"></script>
+		<script type="text/javascript" src="models/structures/fire/FireBase.js"></script>
+		<script type="text/javascript" src="models/structures/fire/SmallFireStation.js"></script>
+		<script type="text/javascript" src="models/structures/fire/BasicFireStation.js"></script>
+		<script type="text/javascript" src="models/structures/fire/DeluxeFireStation.js"></script>
+		<script type="text/javascript" src="models/structures/police/PoliceBase.js"></script>
+		<script type="text/javascript" src="models/structures/police/SmallPoliceStation.js"></script>
+		<script type="text/javascript" src="models/structures/police/BasicPoliceStation.js"></script>
+		<script type="text/javascript" src="models/structures/police/PolicePrecinct.js"></script>
+		<script type="text/javascript" src="models/structures/health/HealthBase.js"></script>
+		<script type="text/javascript" src="models/structures/health/SmallHealthClinic.js"></script>
+		<script type="text/javascript" src="models/structures/health/HealthClinic.js"></script>
+		<script type="text/javascript" src="models/structures/health/Hospital.js"></script>
+		<script type="text/javascript" src="models/structures/government/GovernmentBase.js"></script>
+		<script type="text/javascript" src="models/structures/government/CityHall.js"></script>
+		<script type="text/javascript" src="models/structures/government/CityStorage.js"></script>
+		<script type="text/javascript" src="models/structures/government/EpicProjects.js"></script>
+		<script type="text/javascript" src="models/structures/government/MayorsMansion.js"></script>
+		<script type="text/javascript" src="models/structures/government/TownHall.js"></script>
+		<script type="text/javascript" src="models/structures/education/EducationBase.js"></script>
+		<script type="text/javascript" src="models/structures/education/CommunityCollege.js"></script>
+		<script type="text/javascript" src="models/structures/education/DepartmentOfEducation.js"></script>
+		<script type="text/javascript" src="models/structures/education/GradeSchool.js"></script>
+		<script type="text/javascript" src="models/structures/education/HighSchool.js"></script>
+		<script type="text/javascript" src="models/structures/education/PublicLibrary.js"></script>
+		<script type="text/javascript" src="models/structures/education/University.js"></script>
+		<script type="text/javascript" src="models/structures/parks/ParkBase.js"></script>
+		<script type="text/javascript" src="models/structures/parks/AnchorPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/BallOfTwine.js"></script>
+		<script type="text/javascript" src="models/structures/parks/BasketballCourt.js"></script>
+		<script type="text/javascript" src="models/structures/parks/Dolly.js"></script>
+		<script type="text/javascript" src="models/structures/parks/GiantGardenGnome.js"></script>
+		<script type="text/javascript" src="models/structures/parks/JoggingPath.js"></script>
+		<script type="text/javascript" src="models/structures/parks/LlarryTheLlama.js"></script>
+		<script type="text/javascript" src="models/structures/parks/ModernArtPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/PeacefulPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/PlumbobPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/ReflectingPoolPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/RowOfTrees.js"></script>
+		<script type="text/javascript" src="models/structures/parks/SakuraPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/SculptureGarden.js"></script>
+		<script type="text/javascript" src="models/structures/parks/SkatePark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/SmallFountainPark.js"></script>
+		<script type="text/javascript" src="models/structures/parks/SoccerField.js"></script>
+		<script type="text/javascript" src="models/structures/parks/TokyoTownGate.js"></script>
+		<script type="text/javascript" src="models/structures/parks/UrbanPlaza.js"></script>
+		<script type="text/javascript" src="models/structures/parks/WaterParkPlayground.js"></script>
+
+		<script type="text/javascript" src="BuildItDesigner.js"></script>
+ 		<script type="text/javascript" src="map/Highlight.js"></script>
+ 		<script type="text/javascript" src="map/ManagerOverseer.js"></script>
+ 		<script type="text/javascript" src="map/RoadManager.js"></script>
+ 		<script type="text/javascript" src="map/StructureManager.js"></script>
+ 		<script type="text/javascript" src="map/EffectAreaManager.js"></script>
+ 		<script type="text/javascript" src="map/StatisticsManager.js"></script>
+ 		<script type="text/javascript" src="map/ToolTip.js"></script>
+ 		<script type="text/javascript" src="map/Map.js"></script>
+		<script type="text/javascript" src="map/ExpansionCell.js"></script>
+		<script type="text/javascript" src="data/DesignerConfig.js"></script>
+		<script type="text/javascript" src="data/mapData.js"></script>
+		<script type="text/javascript" src="data/buildingData.js"></script>
+
+		<style>
+			#controls, #tabs {
+				float: right;
+				max-width: 500px;
+				font-size: 0.875em;
+			}
+			.buttonContent {
+				padding-top: 10px;
+				height: 30px;
+			}
+			.button {
+				background: #ccc;
+    			cursor: pointer;
+    			border-top: solid 2px #eaeaea;
+    			border-left: solid 2px #eaeaea;
+    			border-bottom: solid 2px #777;
+    			border-right: solid 2px #777;
+    			padding: 5px 5px; 
+    			white-space: nowrap;
+			}
+			.toggleButton {
+				background: #ccc;
+    			cursor: pointer;
+    			border-top: solid 2px #eaeaea;
+    			border-left: solid 2px #eaeaea;
+    			border-bottom: solid 2px #777;
+    			border-right: solid 2px #777;
+    			padding: 5px 5px; 
+    			white-space: nowrap;
+    			float: left;
+    			clear: both;
+    			min-width: 240px;
+    			text-align: center;
+			}
+			.toggleButton.down {
+				background: #bbb;
+    			border-top: solid 2px #777;
+    			border-left: solid 2px #777;
+    			border-bottom:solid 2px  #eaeaea;
+    			border-right: solid 2px #eaeaea;
+			}
+			.toggleButtonSpecial {
+    			min-width: 150px;
+				clear: none;
+			}
+			.header {
+				font-weight: bold;
+			}
+			hr {
+    			border: 0;
+    			height: 1px;
+    			background: #333;
+    			background-image: linear-gradient(to right, #ccc, #333, #ccc);
+			}
+			.horizontalContent {
+				overflow-y: hidden;
+				overflow-x: scroll;
+				white-space: nowrap;
+			}
+			.tooltipItem {
+				margin: 2px;
+			}
+			.ui-accordion .ui-accordion-header {
+				padding: .1em .1em .1em .2em;
+			}
+			.ui-accordion .ui-accordion-icons {
+    			padding-left: 2.2em;
+			}
+			.ui-accordion .ui-accordion-content {
+    			padding: .1em .5em .1em .5em;
+    		}
+			.ui-tabs .ui-tabs-panel {
+				padding: .1em .1em .1em .1em;
+			}
+			.jstree-default .jstree-hovered {
+				border-radius: none;
+  				box-shadow: none;
+				background: transparent;
+			}
+			.jstree-default .jstree-clicked {
+  				background: transparent;
+  				border-radius: none;
+  				box-shadow: none;
+			}
+			.ui-widget{
+				font-size: 0.7em;
+			}
+		</style>
+
+	</head>
+	<script>
+	$(document).ready(function() {
+		var tabs = $("#tabs").tabs();
+	    tabs.find(".ui-tabs-nav").sortable({
+    	  	axis: "x",
+      	  	stop: function() {
+          		tabs.tabs( "refresh" );
+      	  	}
+    	});
+    	$( "#accordion" ).accordion({
+      		collapsible: true,
+      		heightStyle: "content"
+    	});
+		DesignerConfig.updateMapDimensions();
+    	var buildItDesigner = new BuildItDesigner('canvas');
+    	buildItDesigner.run();
+  	});
+	</script>
+	<body>
+		<div id="title" style="text-align: center">
+			<span style="font-size:2em; font-weight: bold;">SimCity BuildIt Designer</span>
+			<br><br>
+		</div>
+		<canvas id="canvas" width="720" height="720" style="background-color: black;"></canvas>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Buildings</a></li>
+				<li><a href="#tabs-2">Roads</a></li>
+				<li><a href="#tabs-3">Statistics</a></li>
+				<li><a href="#tabs-4">Map Options</a></li>
+				<li><a href="#tabs-5">About</a></li>
+			</ul>
+			<div id="tabs-1">
+				<a id="rotateBuildingButton" class="toggleButton toggleButtonSpecial">Rotate Building</a>&nbsp;
+				<a id="clearBuildingButton" class="toggleButton toggleButtonSpecial">Clear Building</a>&nbsp;
+				<br>
+				<br>
+				<div id="accordion">
+					<h3>Residential</h3>
+					<div>
+						<a id="residentialButton" class="showToolTip toggleButton">Residential Zone</a>
+						<a id="parisianButton" class="toggleButton">Parisian Zone</a>
+						<a id="londonButton" class="toggleButton">London Zone</a>
+						<a id="tokyoButton" class="toggleButton">Tokyo Zone</a>
+					</div>
+					<h3>Industrial</h3>
+					<div>
+						<a id="smallIndustryButton" class="toggleButton">Small Factory</a>
+						<a id="basicIndustryButton" class="toggleButton">Basic Factory</a>
+						<a id="massProductionIndustryButton" class="toggleButton">Mass Production Factory</a>
+						<a id="highTechIndustryButton" class="toggleButton">High Tech Factory</a>
+						<a id="nanoTechIndustryButton" class="toggleButton">Nano Tech Factory</a>
+					</div>
+					<h3>Commercial</h3>
+					<div>
+						<a id="suppliesStoreButton" class="toggleButton">Supplies Store</a>
+						<a id="hardwareStoreButton" class="toggleButton">Hardware Store</a>
+						<a id="farmersMarketButton" class="toggleButton">Farmers Market</a>
+						<a id="furnitureStoreButton" class="toggleButton">Furniture Store</a>
+						<a id="gardeningSuppliesButton" class="toggleButton">Gardening Supplies</a>
+						<a id="donutShopButton" class="toggleButton">Donut Shop</a>
+						<a id="fashionStoreButton" class="toggleButton">Fashion Store</a>
+						<a id="fastFoodRestaurantButton" class="toggleButton">Fast Food Restaurant</a>
+						<a id="homeAppliancesButton" class="toggleButton">Home Appliances</a>
+					</div>
+					<h3>Power</h3>
+					<div>
+						<a id="coalPowerButton" class="toggleButton">Coal</a>
+						<a id="windPowerButton" class="toggleButton">Wind</a>
+						<a id="solarPowerButton" class="toggleButton">Solar</a>
+						<a id="deluxeWindButton" class="toggleButton">Deluxe Wind</a>
+						<a id="oilPowerButton" class="toggleButton">Oil</a>
+						<a id="nuclearPowerButton" class="toggleButton">Nuclear</a>
+						<a id="fusionPowerButton" class="toggleButton">Fusion</a>
+					</div>
+					<h3>Water</h3>
+					<div>
+						<a id="waterTowerButton" class="toggleButton">Water Tower</a>
+						<a id="waterPumpingStationButton" class="toggleButton">Water Pumping Station</a>
+					</div>
+					<h3>Sewage</h3>
+					<div>
+						<a id="smallSewageButton" class="toggleButton">Small Sewage Outflow Pipe</a>
+						<a id="basicSewageButton" class="toggleButton">Basic Sewage Outflow Pipe</a>
+						<a id="deluxeSewageButton" class="toggleButton">Deluxe Sewage Treatment Plant</a>
+					</div>
+					<h3>Waste Management</h3>
+					<div>
+						<a id="smallGarbageDumpButton" class="toggleButton">Small Garbage Dump</a>
+						<a id="garbageDumpButton" class="toggleButton">Garbage Dump</a>
+						<a id="garbageIncineratorButton" class="toggleButton">Garbage Incinerator</a>
+						<a id="recyclingCenterButton" class="toggleButton">Recycling Center</a>
+					</div>
+					<h3>Fire</h3>
+					<div>
+						<a id="smallFireStationButton" class="toggleButton">Small Fire Station</a>
+						<a id="basicFireStationButton" class="toggleButton">Basic Fire Station</a>
+						<a id="deluxeFireStationButton" class="toggleButton">Deluxe Fire Station</a>
+					</div>
+					<h3>Police</h3>
+					<div>
+						<a id="smallPoliceStationButton" class="toggleButton">Small Police Station</a>
+						<a id="basicPoliceStationButton" class="toggleButton">Basic Police Station</a>
+						<a id="policePrecinctButton" class="toggleButton">Police Precinct</a>
+					</div>
+					<h3>Health</h3>
+					<div>
+						<a id="smallHealthClinicButton" class="toggleButton">Small Health Clinic</a>
+						<a id="healthClinicButton" class="toggleButton">Health Clinic</a>
+						<a id="hospitalButton" class="toggleButton">Hospital</a>
+					</div>
+					<h3>Government</h3>
+					<div>
+						<a id="cityHallButton" class="toggleButton">City Hall</a>
+						<a id="cityStorageButton" class="toggleButton">City Storage</a>
+						<a id="epicProjectsButton" class="toggleButton">Epic Projects</a>
+						<a id="mayorsMansionButton" class="toggleButton">Mayors Mansion</a>
+						<a id="townHallButton" class="toggleButton">Town Hall</a>
+					</div>
+					<h3>Parks</h3>
+					<div>
+						<a id="anchorParkButton" class="toggleButton">Anchor Park</a>
+						<a id="ballOfTwineButton" class="toggleButton">Ball of Twine</a>
+						<a id="basketballCourtButton" class="toggleButton">Basketball Court</a>
+						<a id="dollyButton" class="toggleButton">Dolly</a>
+						<a id="giantGardenGnomeButton" class="toggleButton">Giant Garden Gnome</a>
+						<a id="joggingPathButton" class="toggleButton">Jogging Path</a>
+						<a id="llarryTheLlamaButton" class="toggleButton">Llarry the Llama</a>
+						<a id="modernArtParkButton" class="toggleButton">Modern Art Park</a>
+						<a id="peacefulParkButton" class="toggleButton">Peaceful Park</a>
+						<a id="plumbobParkButton" class="toggleButton">Plumbob Park</a>
+						<a id="reflectingPoolParkButton" class="toggleButton">Reflecting Pool Park</a>
+						<a id="rowOfTreesButton" class="toggleButton">Row of Trees</a>
+						<a id="sakuraParkButton" class="toggleButton">Sakura Park</a>
+						<a id="sculptureGardenButton" class="toggleButton">Sculpture Garden</a>
+						<a id="skateParkButton" class="toggleButton">Skate Park</a>
+						<a id="smallFountainParkButton" class="toggleButton">Small Fountain Park</a>
+						<a id="soccerFieldButton" class="toggleButton">Soccer Field</a>
+						<a id="tokyoTownGateButton" class="toggleButton">Tokyo Town Gate</a>
+						<a id="urbanPlazaButton" class="toggleButton">Urban Plaza</a>
+						<a id="waterParkPlaygroundButton" class="toggleButton">Water Park Playground</a>
+					</div>
+					<h3>Education</h3>
+					<div>
+						<a id="departmentOfEducationButton" class="toggleButton">Department Of Education</a>
+						<a id="publicLibraryButton" class="toggleButton">Public Library</a>
+						<a id="gradeSchoolButton" class="toggleButton">Grade School</a>
+						<a id="highSchoolButton" class="toggleButton">High School</a>
+						<a id="communityCollegeButton" class="toggleButton">Community College</a>
+						<a id="universityButton" class="toggleButton">University</a>
+					</div>
+				</div>
+			</div>
+			<div id="tabs-2">
+				<a id="clearRoadButton" class="toggleButton" style="margin-bottom: 30px;">Clear Road</a>
+				<a id="twoLaneRoadButton" class="toggleButton">Two Lane Road</a>
+				<a id="fourLaneRoadButton" class="toggleButton">Four Lane Road</a>
+				<a id="sixLaneRoadButton" class="toggleButton">Six Lane Road</a>
+				<a id="avenueRoadButton" class="toggleButton">Avenue</a>
+				<a id="boulevardRoadButton" class="toggleButton">Boulevard</a>
+				<a id="streetcarRoadButton" class="toggleButton">Streetcar</a>
+			</div>
+			<div id="tabs-3">
+				<div id="statsTree"></div>
+			</div>
+			<div id="tabs-4">
+				<input type="checkbox" id="showToolTipsButtons" checked="checked"></input>
+				<label for="showToolTipsButtons">Show ToolTips On Buttons</label>
+				<br>
+				<input type="checkbox" id="showToolTipsMap" checked="checked"></input>
+				<label for="showToolTipsMap">Show ToolTips On Map</label>
+				<br>
+				<input type="checkbox" id="drawCells" checked="checked"></input>
+				<label for="drawCells">Draw Cells</label>
+				<br>
+				<input type="checkbox" id="drawExpansions"></input>
+				<label for="drawExpansions">Draw Expansion Areas</label>
+				<br>
+				<input type="checkbox" id="drawDirtyAreas"></input>
+				<label for="drawDirtyAreas">Draw Dirty Areas</label>
+				<br>
+				<input type="checkbox" id="drawFireCoverage"></input>
+				<label for="drawFireCoverage">Draw Fire Coverage</label>
+				<br>
+				<input type="checkbox" id="drawPoliceCoverage"></input>
+				<label for="drawPoliceCoverage">Draw Police Coverage</label>
+				<br>
+				<input type="checkbox" id="drawHealthCoverage"></input>
+				<label for="drawHealthCoverage">Draw Health Coverage</label>
+				<br>
+				<input type="checkbox" id="drawParkCoverage"></input>
+				<label for="drawParkCoverage">Draw Park Coverage</label>
+				<br>
+				<input type="checkbox" id="drawEducationCoverage"></input>
+				<label for="drawEducationCoverage">Draw Education Coverage</label>
+				<br>
+				<br>
+				<br>
+				<input type="button" id="saveButton" value="Get Map Data"></input>
+				<br>
+				<br>
+				<input type="button" id="loadButton" value="Load Map Data"></input>
+			</div>
+			<div id="tabs-5">
+				<p>SimCity BuiltIt Designer</p>
+				<p>Version 1.0</p>
+				<p/>
+				<p>SimCity BuildIt Designer is a tool to play with different configurations of city planning for the SimCity BuildIt game. Obviously, this has no affiliation with EA or the actual game. Statistics and logic within the planner are estimations and make no garuntee of accuracy.</p>
+				<p>Some elements are missing or may be inaccurate. These include some of the buildings and possibly some of the area effects. If you like the tool and wish to help, here's some things I could use help on:
+					<ul>
+						<li>Missing building data for transportation</li>
+						<li>Missing building data for entertainment</li>
+						<li>Missing building data for gambling</li>
+						<li>Missing building data for landmarks</li>
+						<li>Missing building data for worship</li>
+						<li>Verification of how area effects work when the size of the effect isn't divisible by the size of the structure</li>
+						<li>Beautification: The UI could use icons and images</li>
+					</ul>
+				</p>
+				<p>If you would like to contribute to the project, you can fork the github repo <a href="https://github.com/IWasZeroCool/BuildItDesigner">here</a></p>
+				<p>If you would like to send images or building data, I can be reached <a href="mailto:j@intuitivecreations.com">here</a></p>
+			</div>
+		</div>
+		<div style="display: none;" id="toolTip">
+			<p style="font-weight: bold;" id="toolTipTitle">Title</p>
+			<p class="toolTipItem" id="toolTipPosition">Position</p>
+			<p class="toolTipItem" id="toolTipSize">Size</p>
+			<p class="toolTipItem" id="toolTipPrice">Price</p>
+			<p class="toolTipItem" id="toolTipDirtyArea">Dirty Area</p>
+			<p class="toolTipItem" id="toolTipEffectArea">Effect Area</p>
+			<p class="toolTipItem" id="toolTipCapacity">Capactiy</p>
+			<p class="toolTipItem" id="toolTipMaxPopulation">Max Population</p>
+			<p class="toolTipItem" id="toolTipSizePopulationBoost">Population Boost</p>
+			<p class="toolTipItem" id="toolTipSizeProduction">Production</p>
+			<p class="toolTipItem" id="toolTipSizeUnique">*Unique</p>
+		</div>
+		<div id="saveMapDataDialog" title="Current Map Data" style="font-size: 1em;">
+			<p>Save this data somewhere. You can load this data when you return.</p>
+			<textarea rows="5" cols="80" id="saveMapDataText"></textarea>
+		</div>
+		<div id="loadMapDataDialog" title="Load Map Data" style="font-size: 1em;">
+			<p>Paste your saved data here.</p>
+			<textarea rows="5" cols="80" id="loadMapDataText"></textarea>
+		</div>
+		<div id="errorDialog" title="Error">
+  			<p>
+  				<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+  				<span id="errorMessage"></span>
+  			</p>
+		</div>
+		<br><br><br><br><br><br><br>
+	</body>
+</html>
