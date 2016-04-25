@@ -348,12 +348,10 @@ Map.prototype.deserializeStructures = function(dataObj) {
 				classString = this.findClassById(dataObj.buildings[i].id);
 				if (!classString) { continue; }
 				objClass = eval(classString);
-				this.structureManager.checkUpdateStructure(dataObj.buildings[i].x, dataObj.buildings[i].y, objClass, this.stage);
 				if (dataObj.buildings[i].o !== undefined && dataObj.buildings[i].o > 0) {
-					var strIdx = this.structureManager.getStructure(dataObj.buildings[i].x, dataObj.buildings[i].y);
-					if (strIdx > -1) {
-						this.structureManager.rotateStructure(strIdx, this.stage, dataObj.buildings[i].o);
-					}
+					this.structureManager.checkUpdateStructure(dataObj.buildings[i].x, dataObj.buildings[i].y, objClass, this.stage, dataObj.buildings[i].o);
+				} else {
+					this.structureManager.checkUpdateStructure(dataObj.buildings[i].x, dataObj.buildings[i].y, objClass, this.stage, 0);
 				}
 			}
 		}

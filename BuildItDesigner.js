@@ -228,6 +228,7 @@ BuildItDesigner.prototype.initControls = function() {
 			} else if (id == "clearBuildingButton") {
 				_this.map.highlight.setDefault();
 			} else {
+				_this.map.highlight.setDefault();
 				_this.map.highlight.setZone(new buttonToClass[id]());
 			}
 		} else {
