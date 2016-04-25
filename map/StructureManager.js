@@ -24,6 +24,7 @@ StructureManager.prototype.updateStructure = function(x, y, stage, orientation) 
 
 StructureManager.prototype.checkUpdateStructure = function(x, y, structureClass, stage, orientation) {
 	var structure = new structureClass(x, y);
+	structure.orientation = orientation;
 	this.checkClearStructure(x, y, stage, structure.getWidth(), structure.getHeight());
 	for (var i = 0; i < this.structures.length; i++) {
 		if (this.structures[i] instanceof structureClass && this.structures[i].singleton) {

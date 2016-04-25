@@ -41,6 +41,34 @@ StructureBase.prototype.getHeight = function() {
 	return this.width;
 };
 
+StructureBase.prototype.getDirtyWidth = function() {
+	if (this.orientation === 0 || this.orientation == 180) {
+		return this.dirtyWidth;
+	}
+	return this.dirtyHeight;
+};
+
+StructureBase.prototype.getDirtyHeight = function() {
+	if (this.orientation === 0 || this.orientation == 180) {
+		return this.dirtyHeight;
+	}
+	return this.dirtyWidth;
+};
+
+StructureBase.prototype.getCoverageWidth = function() {
+	if (this.orientation === 0 || this.orientation == 180) {
+		return this.coverageWidth;
+	}
+	return this.coverageHeight;
+};
+
+StructureBase.prototype.getCoverageHeight = function() {
+	if (this.orientation === 0 || this.orientation == 180) {
+		return this.coverageHeight;
+	}
+	return this.coverageWidth;
+};
+
 StructureBase.prototype.loadZone = function(container) {
 	container.addChild(this.shape);
 	this.setupShape();
@@ -78,11 +106,11 @@ StructureBase.prototype.getEffectArea = function() {
 	var areaWidth;
 	var areaHeight;
 	if (this.dirtyWidth && this.dirtyWidth > 0) {
-		areaWidth = this.dirtyWidth;
-		areaHeight = this.dirtyHeight;
+		areaWidth = this.getDirtyWidth();
+		areaHeight = this.getDirtyHeight();
 	} else {
-		areaWidth = this.coverageWidth;
-		areaHeight = this.coverageHeight;
+		areaWidth = this.getCoverageWidth();
+		areaHeight = this.getCoverageHeight();
 	}
 	var x = this.getX();
 	var y = this.getY();
