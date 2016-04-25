@@ -57,9 +57,9 @@ StructureManager.prototype.getStructure = function(x, y, width, height, skipStru
 	if (!width) { width = 1; }
 	if (!height) { height = 1; }
 	for (var i = 0; i < this.structures.length; i++) {
-		if (x < this.structures[i].x + this.structures[i].width &&
+		if (x < this.structures[i].x + this.structures[i].getWidth() &&
 			x + width > this.structures[i].x &&
-			y < this.structures[i].y + this.structures[i].height &&
+			y < this.structures[i].y + this.structures[i].getHeight() &&
 			y + height > this.structures[i].y) {
 			if (skipStructureIndex !== undefined && i == skipStructureIndex) { continue; }
 			return i;
